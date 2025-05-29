@@ -23,7 +23,7 @@ const Footer = () => {
               <a href="https://github.com/Bamamou" className="hover:text-accent transition-colors" aria-label="GitHub">
                 <Github size={20} />
               </a>
-              <a href="#" className="hover:text-accent transition-colors" aria-label="Twitter">
+              <a href="https://x.com/NicolasBamamou" className="hover:text-accent transition-colors" aria-label="Twitter">
                 <Twitter size={20} />
               </a>
               <a href="https://www.youtube.com/@nicolasbamamou94" target="_blank" className="hover:text-accent transition-colors" aria-label="YouTube">

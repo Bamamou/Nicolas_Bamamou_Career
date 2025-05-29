@@ -1,4 +1,4 @@
-import { ArrowDown, RefreshCw, Quote } from "lucide-react";
+import { ArrowDown, RefreshCw, Quote, Globe } from "lucide-react";
 import profileImage from "@/assets/images/bamamou.jpg";
 import { useState, useEffect } from 'react';
 import { quotes } from "@/data/quotes";
@@ -6,6 +6,7 @@ import { quotes } from "@/data/quotes";
 const Hero = () => {
   const [quoteData, setQuoteData] = useState({ content: '', author: '' });
   const [isLoading, setIsLoading] = useState(false);
+  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
 
   const getRandomQuote = () => {
     setIsLoading(true);
@@ -18,8 +19,56 @@ const Hero = () => {
     getRandomQuote();
   }, []);
 
+    useEffect(() => {
+    const closeMenu = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.language-switcher')) {
+        setIsLanguageMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('click', closeMenu);
+    return () => document.removeEventListener('click', closeMenu);
+  }, []);
+
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center relative pt-16 pb-8">
+      {/* Language Switcher */}
+      <div className="absolute top-8 right-8 z-50 language-switcher">
+        <div className="relative">
+          <button
+            onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md 
+                       border border-white/20 hover:bg-white/20 transition-all duration-300
+                       shadow-lg text-primary"
+          >
+            <Globe className="w-5 h-5" />
+            <span>English</span>
+          </button>
+          
+          {isLanguageMenuOpen && (
+            <div className="absolute top-full right-0 mt-2 w-40 rounded-xl overflow-hidden
+                          bg-white/10 backdrop-blur-md border border-white/20 shadow-xl"
+            >
+              <a
+                href="https://cecedekp.github.io/Nicolas_Bamamou_Career_Chinese/"
+                className="flex items-center gap-2 px-4 py-3 hover:bg-white/20 transition-all duration-300"
+              >
+                <img src="/flags/cn.svg" alt="English" className="w-5 h-5 rounded-full" />
+                <span>中文</span>
+              </a>
+              <a
+                href="/fr"
+                className="flex items-center gap-2 px-4 py-3 hover:bg-white/20 transition-all duration-300"
+              >
+                <img src="/flags/fr.svg" alt="Français" className="w-5 h-5 rounded-full" />
+                <span>Français</span>
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 -z-10"></div>
       
       <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-12">
