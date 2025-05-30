@@ -54,7 +54,7 @@ const Hero = () => {
                 href="https://cecedekp.github.io/Nicolas_Bamamou_Career_Chinese/"
                 className="flex items-center gap-2 px-4 py-3 hover:bg-white/20 transition-all duration-300"
               >
-                <img src="./flags/cn.svg" alt="English" className="w-5 h-5 rounded-full" />
+                <img src="./flags/cn.svg" alt="Chinese" className="w-5 h-5 rounded-full" />
                 <span>中文</span>
               </a>
               <a
