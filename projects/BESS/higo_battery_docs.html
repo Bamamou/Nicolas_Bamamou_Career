@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>72V 102Ah LFP Battery Pack - Technical Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .model-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(238, 90, 36, 0.4);
+        }
+
+        .nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav a:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid;
+            border-image: linear-gradient(135deg, #667eea, #764ba2) 1;
+        }
+
+        .section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #555;
+            margin: 25px 0 15px 0;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .spec-card {
+            background: linear-gradient(135deg, #f8f9ff, #e8efff);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .spec-card .label {
+            font-weight: 600;
+            color: #333;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .spec-card .value {
+            font-size: 1.1rem;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #e17055;
+            box-shadow: 0 5px 15px rgba(225, 112, 85, 0.2);
+        }
+
+        .highlight-box h4 {
+            color: #2d3436;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateX(5px);
+        }
+
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .application-card {
+            background: linear-gradient(135deg, #a8e6cf, #88d8a3);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            color: #2d3436;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(136, 216, 163, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .application-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(136, 216, 163, 0.4);
+        }
+
+        .safety-warning {
+            background: linear-gradient(135deg, #ff7675, #fd79a8);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(255, 118, 117, 0.3);
+        }
+
+        .safety-warning h4 {
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .safety-warning ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .safety-warning li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .safety-warning li:before {
+            content: "⚠";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .warranty-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .header .subtitle { font-size: 1.1rem; }
+            .nav ul { flex-direction: column; align-items: center; }
+            .section { padding: 25px; }
+            .specs-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>72V 102Ah LFP Battery Pack</h1>
+            <p class="subtitle">Professional Lithium Iron Phosphate Battery System</p>
+            <div class="model-badge">Model: ECOMO-LFP102A-24S1P</div>
+        </header>
+
+        <nav class="nav">
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#electrical">Electrical Specs</a></li>
+                <li><a href="#mechanical">Mechanical</a></li>
+                <li><a href="#environmental">Environmental</a></li>
+                <li><a href="#bms">BMS Features</a></li>
+                <li><a href="#applications">Applications</a></li>
+                <li><a href="#safety">Safety</a></li>
+                <li><a href="#warranty">Warranty</a></li>
+            </ul>
+        </nav>
+
+        <section id="overview" class="section">
+            <h2>General Overview</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="label">Battery Chemistry</div>
+                    <div class="value">Lithium Iron Phosphate (LiFePO₄)</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Nominal Voltage</div>
+                    <div class="value">76.8V</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Nominal Capacity</div>
+                    <div class="value">102Ah</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Energy Capacity</div>
+                    <div class="value">7.84 kWh</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Cell Configuration</div>
+                    <div class="value">24S1P (24 cells in series)</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Operating Voltage Range</div>
+                    <div class="value">64V - 87.6V</div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>Key Features</h4>
+                <p>This professional-grade LiFePO₄ battery pack delivers exceptional performance with advanced safety features, making it ideal for demanding applications requiring reliable, long-lasting power storage.</p>
+            </div>
+        </section>
+
+        <section id="electrical" class="section">
+            <h2>Electrical Characteristics</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="label">Cell Type</div>
+                    <div class="value">GT 102Ah LFP Prismatic Cells</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Cycle Life</div>
+                    <div class="value">≥3,500 cycles @ 80% DoD</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Calendar Life</div>
+                    <div class="value">8 years (typical)</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Max Discharge Current</div>
+                    <div class="value">1.5C Continuous / 3.5C Peak (30s)</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Max Charge Current</div>
+                    <div class="value">1C Continuous</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Internal Resistance</div>
+                    <div class="value">≤50 mΩ @ 1kHz (fully charged)</div>
+                </div>
+            </div>
+
+            <h3>Performance Specifications</h3>
+            <div class="features-list">
+                <div class="feature-item">High energy density with 7.84 kWh capacity</div>
+                <div class="feature-item">Superior cycle life exceeding 3,500 cycles</div>
+                <div class="feature-item">Low internal resistance for efficient operation</div>
+                <div class="feature-item">Wide operating voltage range (60V-80V)</div>
+                <div class="feature-item">High discharge rates up to 3.5C peak</div>
+                <div class="feature-item">Fast charging capability at 1C continuous</div>
+            </div>
+        </section>
+
+        <section id="mechanical" class="section">
+            <h2>Mechanical Specifications</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="label">Dimensions (L×W×H)</div>
+                    <div class="value">813mm × 300mm × 205mm</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Weight</div>
+                    <div class="value">Approximately 55 kg</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Enclosure Material</div>
+                    <div class="value">304 Stainless Steel (Laser Welded)</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">IP Rating</div>
+                    <div class="value">IP65 (Watertight)</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Main Connector</div>
+                    <div class="value">Futronic FHV20×26×T (250A Peak)</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Data Connector</div>
+                    <div class="value">WS16 (7-pin)</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Construction Features</h4>
+                <p>Built with premium 304 stainless steel construction and laser welding for maximum durability. The IP65-rated enclosure ensures protection against dust and water ingress, making it suitable for harsh environments.</p>
+            </div>
+        </section>
+
+        <section id="environmental" class="section">
+            <h2>Environmental Specifications</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="label">Charge Temperature Range</div>
+                    <div class="value">0°C to +55°C</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Discharge Temperature Range</div>
+                    <div class="value">-20°C to +60°C</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Storage Temperature</div>
+                    <div class="value">-10°C to +45°C (recommended)</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Humidity</div>
+                    <div class="value">&lt;95% RH (non-condensing)</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Altitude</div>
+                    <div class="value">≤2,000m</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Vibration Resistance</div>
+                    <div class="value">Included mounting brackets</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bms" class="section">
+            <h2>Advanced Battery Management System</h2>
+            <div class="highlight-box">
+                <h4>Evoke v6.7 BMS</h4>
+                <p>State-of-the-art battery management system with comprehensive protection and optimization features.</p>
+            </div>
+
+            <h3>Protection Features</h3>
+            <div class="features-list">
+                <div class="feature-item">Pack over/under voltage protection</div>
+                <div class="feature-item">Individual string voltage monitoring</div>
+                <div class="feature-item">Short circuit protection</div>
+                <div class="feature-item">Excessive power consumption protection</div>
+                <div class="feature-item">Over/under temperature limitations</div>
+                <div class="feature-item">Low power cutoff</div>
+            </div>
+
+            <h3>Smart Features</h3>
+            <div class="features-list">
+                <div class="feature-item">Power optimization algorithms</div>
+                <div class="feature-item">Variable voltage balancing</div>
+                <div class="feature-item">Passive cell balancing</div>
+                <div class="feature-item">Temperature-based power ramping</div>
+                <div class="feature-item">Limp mode for emergency operation</div>
+                <div class="feature-item">Constant current/voltage charging</div>
+                <div class="feature-item">Cell delta threshold protection</div>
+                <div class="feature-item">Charger safety control</div>
+            </div>
+        </section>
+
+        <section id="applications" class="section">
+            <h2>Applications</h2>
+            <div class="applications-grid">
+                <div class="application-card">Electric Motorcycles & Tricycles</div>
+                <div class="application-card">Light Electric Vehicles (LEVs)</div>
+                <div class="application-card">Energy Storage Systems (ESS)</div>
+                <div class="application-card">Solar Power Backup</div>
+                <div class="application-card">Industrial Equipment</div>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Versatile Power Solution</h4>
+                <p>Designed for a wide range of applications requiring reliable, high-capacity energy storage with excellent safety characteristics and long service life.</p>
+            </div>
+        </section>
+
+        <section id="safety" class="section">
+            <h2>Safety & Certifications</h2>
+            
+            <h3>Certifications</h3>
+            <div class="features-list">
+                <div class="feature-item">UN 38.3 Transportation Safety</div>
+                <div class="feature-item">IEC 62133 / UL 2580 / UL 1973 (on request)</div>
+                <div class="feature-item">CE & RoHS Compliant</div>
+                <div class="feature-item">EMC Compliance: EN 61000</div>
+            </div>
+
+            <div class="safety-warning">
+                <h4>Important Safety Guidelines</h4>
+                <ul>
+                    <li>Do not short-circuit, crush, or puncture the battery</li>
+                    <li>Do not expose to fire or temperatures above 60°C</li>
+                    <li>Only use compatible chargers</li>
+                    <li>Store in a dry, cool, and well-ventilated area</li>
+                    <li>Follow manufacturer's MSDS and safety instructions</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="warranty" class="section">
+            <h2>Warranty & Support</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="label">Standard Warranty</div>
+                    <div class="value">3 Years or 2,000 cycles</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Extended Warranty</div>
+                    <div class="value">Available up to 5 years</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Technical Support</div>
+                    <div class="value">Email / Phone / Remote Diagnostics</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Customization</div>
+                    <div class="value">BMS, enclosure, connectors available</div>
+                </div>
+            </div>
+
+            <div class="warranty-badge">Professional Support Included</div>
+        </section>
+
+        <footer class="footer">
+            <p><strong>72V 102Ah LFP Battery Pack</strong></p>
+            <p>Professional Grade Lithium Iron Phosphate Energy Storage Solution</p>
+            <p>Model: EVK-LFP102A-22S1P | Evoke v6.7 BMS</p>
+        </footer>
+    </div>
+</body>
+</html>
